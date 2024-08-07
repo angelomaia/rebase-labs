@@ -7,12 +7,15 @@ services:
       POSTGRES_PASSWORD: my_password
     ports:
       - "5432:5432"
+    volumes:
+      - ./server/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     container_name: relabs-db
 
   server:
     build: .
+    command: bash -c 'bundle install && ruby server.rb'
     volumes:
-      - .:/app
+      - ./server:/app
       - bundle_data:/usr/local/bundle
     ports:
       - "3000:3000"
@@ -20,7 +23,6 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://my_user:my_password@db:5432/my_database
-    command: bash -c 'bundle install && ruby server.rb'
     container_name: relabs-server
 
 volumes:

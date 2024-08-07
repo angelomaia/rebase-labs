@@ -1,0 +1,21 @@
+CREATE TABLE complete_tests (
+  id SERIAL PRIMARY KEY,
+  patient_cpf VARCHAR NOT NULL,
+  patient_name VARCHAR NOT NULL,
+  patient_email VARCHAR NOT NULL,
+  patient_birthdate DATE NOT NULL,
+  patient_address VARCHAR NOT NULL,
+  patient_city VARCHAR NOT NULL,
+  patient_state VARCHAR NOT NULL,
+  crm VARCHAR NOT NULL,
+  crm_state VARCHAR NOT NULL,
+  doctor_name VARCHAR NOT NULL,
+  doctor_email VARCHAR NOT NULL,
+  result_token VARCHAR NOT NULL,
+  result_date VARCHAR,
+  exam_type VARCHAR NOT NULL,
+  exam_limits VARCHAR NOT NULL,
+  exam_results VARCHAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

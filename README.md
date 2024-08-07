@@ -42,5 +42,5 @@ Agora o JSON resultante da consulta no banco de dados é disponibilizado pela AP
 Para rodar os testes, execute o comando a seguir com os containers do projeto rodando:
 
 ```
-docker exec relabs-server bundle exec rspec
+docker exec relabs-server rspec
 ```

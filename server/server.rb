@@ -9,7 +9,7 @@ get '/tests' do
   content_type :json
 
   conn = PG.connect(DB_PARAMS)
-  result = conn.exec("SELECT * FROM imported_data")
+  result = conn.exec("SELECT * FROM complete_tests")
 
   data = result.map do |row|
     row
