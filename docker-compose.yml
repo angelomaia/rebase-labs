@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: my_database
+      POSTGRES_USER: my_user
+      POSTGRES_PASSWORD: my_password
+    ports:
+      - "5432:5432"
+    container_name: relabs-db
+
+  server:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://my_user:my_password@db:5432/my_database
+    command: bash -c 'bundle install && ruby server.rb'
+    container_name: relabs-server
+
+volumes:
+  bundle_data:
