@@ -1,5 +1,4 @@
 require 'pg'
-require 'csv'
 require './config/db_config'
 
 class CSVImporter

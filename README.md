@@ -21,14 +21,26 @@ Uma app web para listagem de exames médicos.
 
 ### Como rodar a aplicação
 
-Rode o comando na pasta raiz do projeto para subir a aplicação no Docker:
+Execute o seguinte comando na pasta raiz do projeto para rodar a aplicação via Docker:
 
-```docker-compose up --build```
+```
+docker-compose up --build
+```
 
 em seguida abra outro terminal e rode o script para importação de dados de exames fictícios para o banco de dados:
 
-```docker exec relabs-server ruby import_from_csv.rb```
+```
+docker exec relabs-server ruby import_from_csv.rb
+```
 
-o JSON resultante da consulta no banco de dados é disponibilizado pela API na rota:
+Agora o JSON resultante da consulta no banco de dados é disponibilizado pela API na rota ```http://localhost:3000/tests```.
 
-```http://localhost:3000/tests```
+---
+
+### Testes (RSpec)
+
+Para rodar os testes, execute o comando a seguir com os containers do projeto rodando:
+
+```
+docker exec relabs-server bundle exec rspec
+```
