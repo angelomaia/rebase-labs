@@ -1,0 +1,51 @@
+body {
+  background: linear-gradient(to bottom right, #ffffff, #74c1ff);
+  margin: 0;
+}
+
+.result-item {
+  margin-bottom: 20px;
+}
+
+.result-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result-card h3 {
+  margin-bottom: 15px;
+}
+
+.result-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.result-card li {
+  margin-bottom: 8px;
+}
+
+.result-card .table td {
+    text-transform: capitalize;
+}
+
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invisible-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.invisible-link h2 {
+  margin: 0;
+}
+
+.navbar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -25,5 +25,17 @@ services:
       DATABASE_URL: postgres://my_user:my_password@db:5432/my_database
     container_name: exams-server
 
+  app:
+    build: .
+    command: bash -c 'bundle install && rackup --host 0.0.0.0'
+    volumes:
+      - ./app:/app
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "4000:9292"
+    depends_on:
+      - server
+    container_name: exams-app
+
 volumes:
   bundle_data:

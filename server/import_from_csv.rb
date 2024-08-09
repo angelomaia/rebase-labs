@@ -108,7 +108,6 @@ class CSVImporter
     raise "Test not found" if result.ntuples == 0
     result[0]['id']
   end
-  
 
   def extract_values(columns, row, required_columns)
     required_columns.map { |col| row[columns.index(col)] }

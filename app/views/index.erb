@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebase Labs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="navbar-brand mb-0">
+            <a href="/" class="invisible-link">
+              <h2>Rebase Labs - Listagem de Exames</h2>
+            </a>
+          </div>
+        </div>
+    </header>
+
+    <div id="pagination-controls" class="pagination-controls"></div>
+
+    <div id="test-list" class="container mt-4">
+        <% @tests.each do |result| %>
+          <div class="result-item">
+            <div class="card result-card">
+              <div class="row mb-3">
+                <div class="col-md-2">
+                  <h5><strong>Paciente:</strong></h5>
+                  <p><%= result['name'] %></p>
+                </div>
+                <div class="col-md-2">
+                  <h5><strong>CPF:</strong></h5>
+                  <p><%= result['cpf'] %></p>
+                </div>
+                <div class="col-md-4">
+                  <h5><strong>Médico (CRM)  :</strong></h5>
+                  <p><%= result['doctor']['name'] %> (<%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %>)</p>
+                </div>
+                <div class="col-md-2">
+                  <h5><strong>Data do Exame:</strong></h5>
+                  <p><%= result['result_date'] %></p>
+                </div>
+                <div class="col-md-2">
+                  <h5><strong>Token:</strong></h5>
+                  <p><%= result['result_token'] %></p>
+                </div>
+              </div>
+              <hr>
+              <h5>Resultados dos Exames:</h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-left">Exame</th>
+                    <th class="text-center">Resultado</th>
+                    <th class="text-center">Limites</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% result['tests'].each do |test| %>
+                    <tr>
+                      <td class="text-left"><%= test['type'] %></td>
+                      <td class="text-center"><%= test['result'] %></td>
+                      <td class="text-center"><%= test['limits'] %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/js/pagination.js"></script>
+  </body>
+</html>
