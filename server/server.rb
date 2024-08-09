@@ -30,7 +30,6 @@ get '/tests' do
 
   result = conn.exec(query)
 
-  # Build the hash for each test
   data = result.group_by { |row| row['result_token'] }.map do |token, rows|
     {
       "result_token" => token,

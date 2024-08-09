@@ -1,0 +1,70 @@
+# spec/csv_importer_spec.rb
+require 'spec_helper'
+require 'csv'
+require 'pg'
+require_relative '../import_from_csv'
+
+describe CSVImporter do
+  let(:db_params) { { dbname: 'test_db', user: 'user', password: 'password' } }
+  let(:csv_file) { 'spec/fixtures/sample_data.csv' }
+  let(:csv_importer) { CSVImporter.new(db_params, csv_file) }
+  
+  let(:mock_conn) { double('PG::Connection') }
+
+  before do
+    allow(PG).to receive(:connect).and_return(mock_conn)
+  end
+
+  describe '#import' do
+    it 'imports data from CSV and inserts into the database' do
+      expect(mock_conn).to receive(:exec_params).at_least(:once)
+
+      csv_importer.import
+    end
+  end
+
+  describe '#import_patient' do
+    it 'inserts a patient record into the database' do
+      patient_query = "INSERT INTO patients (cpf, name, email, birthday, address, city, state) VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (cpf) DO NOTHING RETURNING id"
+      expect(mock_conn).to receive(:exec_params).with(patient_query, ['12345678901', 'John Doe', 'john.doe@example.com', '1980-01-01', '123 Street', 'City', 'State'])
+
+      csv_importer.send(:import_patient, ['cpf', 'name', 'email', 'birthday', 'address', 'city', 'state'], ['12345678901', 'John Doe', 'john.doe@example.com', '1980-01-01', '123 Street', 'City', 'State'])
+    end
+  end
+
+  describe '#import_doctor' do
+    it 'inserts a doctor record into the database' do
+      doctor_query = "INSERT INTO doctors (crm, crm_state, name, email) VALUES ($1, $2, $3, $4) ON CONFLICT (crm) DO NOTHING RETURNING id"
+      expect(mock_conn).to receive(:exec_params).with(doctor_query, ['1234', 'SP', 'Dr. Smith', 'dr.smith@example.com'])
+
+      csv_importer.send(:import_doctor, ['crm médico', 'crm médico estado', 'nome médico', 'email médico'], ['1234', 'SP', 'Dr. Smith', 'dr.smith@example.com'])
+    end
+  end
+
+  describe '#import_test' do
+    it 'inserts a test record into the database' do
+      test_query = "INSERT INTO tests (result_token, result_date, doctor_id, patient_id) VALUES ($1, $2, $3, $4) ON CONFLICT (result_token) DO NOTHING RETURNING id"
+      expect(mock_conn).to receive(:exec_params).with(test_query, ['token123', '2024-08-09', '1', '1'])
+
+      csv_importer.send(:import_test, ['token resultado exame', 'data exame'], ['token123', '2024-08-09'], '1', '1')
+    end
+  end
+
+  describe '#import_exam' do
+    it 'inserts an exam record into the database' do
+      exam_query = "INSERT INTO exams (test_type, test_limits, result) VALUES ($1, $2, $3) RETURNING id"
+      expect(mock_conn).to receive(:exec_params).with(exam_query, ['type', 'limits', 'result'])
+
+      csv_importer.send(:import_exam, ['tipo exame', 'limites tipo exame', 'resultado tipo exame'], ['type', 'limits', 'result'])
+    end
+  end
+
+  describe '#link_test_exam' do
+    it 'inserts a record into test_exams table' do
+      link_query = "INSERT INTO test_exams (test_id, exam_id) VALUES ($1, $2)"
+      expect(mock_conn).to receive(:exec_params).with(link_query, ['1', '1'])
+
+      csv_importer.send(:link_test_exam, '1', '1')
+    end
+  end
+end
