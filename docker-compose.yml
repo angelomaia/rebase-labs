@@ -9,7 +9,7 @@ services:
       - "5432:5432"
     volumes:
       - ./server/setup.sql:/docker-entrypoint-initdb.d/setup.sql
-    container_name: relabs-db
+    container_name: exams-db
 
   server:
     build: .
@@ -23,7 +23,7 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://my_user:my_password@db:5432/my_database
-    container_name: relabs-server
+    container_name: exams-server
 
 volumes:
   bundle_data:

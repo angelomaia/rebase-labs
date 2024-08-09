@@ -1,21 +1,49 @@
-CREATE TABLE complete_tests (
+CREATE TABLE patients (
   id SERIAL PRIMARY KEY,
-  patient_cpf VARCHAR NOT NULL,
-  patient_name VARCHAR NOT NULL,
-  patient_email VARCHAR NOT NULL,
-  patient_birthdate DATE NOT NULL,
-  patient_address VARCHAR NOT NULL,
-  patient_city VARCHAR NOT NULL,
-  patient_state VARCHAR NOT NULL,
-  crm VARCHAR NOT NULL,
+  cpf VARCHAR NOT NULL UNIQUE,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  birthday DATE NOT NULL,
+  address VARCHAR,
+  city VARCHAR,
+  state VARCHAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE doctors (
+  id SERIAL PRIMARY KEY,
+  crm VARCHAR NOT NULL UNIQUE,
   crm_state VARCHAR NOT NULL,
-  doctor_name VARCHAR NOT NULL,
-  doctor_email VARCHAR NOT NULL,
-  result_token VARCHAR NOT NULL,
-  result_date VARCHAR,
-  exam_type VARCHAR NOT NULL,
-  exam_limits VARCHAR NOT NULL,
-  exam_results VARCHAR,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tests (
+  id SERIAL PRIMARY KEY,
+  result_token VARCHAR NOT NULL UNIQUE,
+  result_date DATE,
+  doctor_id INT REFERENCES doctors(id),
+  patient_id INT REFERENCES patients(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE exams (
+  id SERIAL PRIMARY KEY,
+  test_type VARCHAR NOT NULL,
+  test_limits VARCHAR NOT NULL,
+  result VARCHAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE test_exams (
+  id SERIAL PRIMARY KEY,
+  test_id INT REFERENCES tests(id),
+  exam_id INT REFERENCES exams(id),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
