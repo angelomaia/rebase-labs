@@ -24,27 +24,25 @@
     <div id="test-list" class="container mt-4">
         <% @tests.each do |result| %>
           <div class="result-item">
-            <div class="card result-card">
+            <div class="card result-card" style="padding: 40px;">
               <div class="row mb-3">
-                <div class="col-md-2">
-                  <h5><strong>Paciente:</strong></h5>
-                  <p><%= result['name'] %></p>
-                </div>
-                <div class="col-md-2">
-                  <h5><strong>CPF:</strong></h5>
-                  <p><%= result['cpf'] %></p>
-                </div>
                 <div class="col-md-4">
-                  <h5><strong>Médico (CRM)  :</strong></h5>
-                  <p><%= result['doctor']['name'] %> (<%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %>)</p>
-                </div>
-                <div class="col-md-2">
                   <h5><strong>Data do Exame:</strong></h5>
                   <p><%= result['result_date'] %></p>
-                </div>
-                <div class="col-md-2">
                   <h5><strong>Token:</strong></h5>
                   <p><%= result['result_token'] %></p>
+                </div>
+                <div class="col-md-4">
+                  <h5><strong>Paciente:</strong></h5>
+                  <p><strong>Nome: </strong><%= result['name'] %></p>
+                  <p><strong>CPF: </strong><%= result['cpf'] %></p>
+                  <p><strong>E-mail: </strong><%= result['email'] %></p>
+                  <p><strong>Nasc.: </strong><%= result['birthday'] %></p>
+                </div>
+                <div class="col-md-4">
+                  <h5><strong>Médico :</strong></h5>
+                  <p><strong>Nome: </strong><%= result['doctor']['name'] %></p>
+                  <p><strong>CRM: </strong><%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %></p>
                 </div>
               </div>
               <hr>
