@@ -8,7 +8,6 @@ describe 'Usuário visualiza listagem de exames' do
     allow(Faraday).to receive(:get).with('http://exams-server:3000/tests').and_return(fake_response)
 
     visit '/'
-    save_and_open_page
 
     expect(page).to have_content 'Rebase Labs - Listagem de Exames'
     within('#test-list') do
@@ -30,5 +29,16 @@ describe 'Usuário visualiza listagem de exames' do
       expect(page).to have_content 'Henry Pinheira Filho'
       expect(page).to have_content 'Maria Helena Ramalho'
     end
+  end
+
+  it 'e não há nenhum exame cadastrado' do
+    json_data = [].to_json
+    fake_response = instance_double(Faraday::Response, body: json_data)
+    allow(Faraday).to receive(:get).with('http://exams-server:3000/tests').and_return(fake_response)
+
+    visit '/'
+
+    expect(page).to have_content 'Rebase Labs - Listagem de Exames'
+    expect(page).to have_content 'Nenhum exame encontrado'
   end
 end

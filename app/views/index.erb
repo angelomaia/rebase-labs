@@ -21,11 +21,12 @@
 
     <div id="pagination-controls-top" class="pagination-controls mb-4"></div>
 
-    <div id="test-list" class="container mt-4">
+    <% if @tests.length > 0 %>
+      <div id="test-list" class="container mt-4">
         <% @tests.each do |result| %>
           <div class="result-item">
             <div class="card result-card" style="padding: 40px;">
-              <div class="row mb-3">
+              <div class="row">
                 <div class="col-md-4">
                   <h5><strong>Data do Exame:</strong></h5>
                   <p><%= result['result_date'] %></p>
@@ -46,8 +47,7 @@
                 </div>
               </div>
               <hr>
-              <h5>Resultados dos Exames:</h5>
-              <table class="table">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th class="text-left">Exame</th>
@@ -68,7 +68,10 @@
             </div>
           </div>
         <% end %>
-    </div>
+      </div>
+    <% else %>
+      <h5 class="text-center">Nenhum exame encontrado.</h5>
+    <% end %>
 
     <div id="pagination-controls-bottom" class="pagination-controls mb-4"></div>
 
