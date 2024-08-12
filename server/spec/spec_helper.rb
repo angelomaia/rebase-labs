@@ -7,6 +7,7 @@ require 'sinatra'
 require 'rack/test'
 require_relative '../server'
 require_relative '../config/db_config'
+require_relative '../services/import_from_csv.rb'
 
 DB = PG.connect(DB_PARAMS)
 

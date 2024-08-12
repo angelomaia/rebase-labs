@@ -1,6 +1,4 @@
 require 'spec_helper'
-require_relative '../../config/db_config.rb'
-require_relative '../../import_from_csv.rb'
 
 describe 'CSVImporter' do
   it '#import' do
