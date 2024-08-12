@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const resultsPerPage = 10;
+    const resultsPerPage = 5;
     const resultsContainer = document.getElementById('test-list');
     const results = Array.from(resultsContainer.getElementsByClassName('result-item'));
     const totalResults = results.length;

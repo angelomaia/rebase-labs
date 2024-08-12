@@ -1,6 +1,22 @@
+html {
+  height: 100%;
+}
+
 body {
-  background: linear-gradient(to bottom right, #ffffff, #74c1ff);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  background-color: #cfe9ff;
+}
+
+.content {
+  flex: 1;
+}
+
+.header-with-icon {
+  display: flex;
+  align-items: center;
 }
 
 .result-item {
