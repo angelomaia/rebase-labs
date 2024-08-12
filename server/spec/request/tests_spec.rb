@@ -1,32 +1,9 @@
 require 'spec_helper'
-require_relative '../../config/db_config.rb'
 
 describe '/tests' do
   it 'GET' do
-    result_rows = [
-      {
-        'result_token' => 'IQCZ17',
-        'result_date' => '2021-08-05',
-        'cpf' => '048.973.170-88',
-        'name' => 'Emilly Batista Neto',
-        'email' => 'gerald.crona@ebert-quigley.com',
-        'birthday' => '2001-03-11',
-        'crm' => 'B000BJ20J4',
-        'crm_state' => 'PI',
-        'doctor_name' => 'Maria Luiza Pires',
-        'test_type' => 'hemácias',
-        'test_limits' => '45-52',
-        'exam_result' => '97'
-      }
-    ]
-
-    mock_result = instance_double('PG::Result')
-    allow(mock_result).to receive(:group_by).and_return(
-      result_rows.group_by { |row| row['result_token'] }
-    )
-
-    connection = instance_double('PG::Connection', exec: mock_result)
-    allow(PG).to receive(:connect).and_return(connection)
+    importer = CSVImporter.new(DB_PARAMS, './sample/small_data.csv')
+    importer.import
 
     get '/tests'
 
@@ -34,22 +11,32 @@ describe '/tests' do
     expect(last_response.status).to eq 200
     expect(last_response.content_type).to include 'application/json'
     expect(JSON.parse(last_response.body)).to eq [{
-                                                    "result_token" => "IQCZ17",
-                                                    "result_date" => "2021-08-05",
-                                                    "cpf" => "048.973.170-88",
-                                                    "name" => "Emilly Batista Neto",
-                                                    "email" => "gerald.crona@ebert-quigley.com",
-                                                    "birthday" => "2001-03-11",
+                                                    "result_token" => "0B5XII",
+                                                    "result_date" => "2021-07-15",
+                                                    "cpf" => "089.034.562-70",
+                                                    "name" => "Patricia Gentil",
+                                                    "email" => "herta_wehner@krajcik.name",
+                                                    "birthday" => "1998-02-25",
                                                     "doctor" => {
-                                                      "crm" => "B000BJ20J4",
-                                                      "crm_state" => "PI",
-                                                      "name" => "Maria Luiza Pires"
+                                                      "crm" => "B0002W2RBG",
+                                                      "crm_state" => "CE",
+                                                      "name" => "Dra. Isabelly Rêgo"
                                                     },
                                                     "tests" => [
                                                       {
                                                         "type" => "hemácias",
                                                         "limits" => "45-52",
-                                                        "result" => "97"
+                                                        "result" => "57"
+                                                      },
+                                                      {
+                                                        "type" => "leucócitos",
+                                                        "limits" => "9-61",
+                                                        "result" => "62"
+                                                      },
+                                                      {
+                                                        "type" => "plaquetas",
+                                                        "limits" => "11-93",
+                                                        "result" => "73"
                                                       }]
                                                   }]
   end

@@ -1,5 +1,5 @@
 DB_PARAMS = {
-  dbname: 'my_database',
+  dbname: ENV['DB_NAME'] ||= 'my_database',
   user: 'my_user',
   password: 'my_password',
   host: 'exams-db',

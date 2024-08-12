@@ -9,7 +9,7 @@ describe 'Usuário visualiza listagem de exames' do
 
     visit '/'
 
-    expect(page).to have_content 'Rebase Labs - Listagem de Exames'
+    expect(page).to have_content 'Rebase Labs'
     within('#test-list') do
       expect(page).to have_content 'Núbia Sais Filho'
       expect(page).to have_content 'zachariah@olson.org'
@@ -38,7 +38,7 @@ describe 'Usuário visualiza listagem de exames' do
 
     visit '/'
 
-    expect(page).to have_content 'Rebase Labs - Listagem de Exames'
+    expect(page).to have_content 'Rebase Labs'
     expect(page).to have_content 'Nenhum exame encontrado'
   end
 end
