@@ -8,6 +8,7 @@ require 'rack/test'
 require_relative '../server'
 require_relative '../config/db_config'
 require_relative '../services/import_from_csv.rb'
+require_relative '../services/query_service.rb'
 
 DB = PG.connect(DB_PARAMS)
 

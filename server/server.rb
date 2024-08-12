@@ -2,6 +2,7 @@ require 'sinatra'
 require 'puma'
 require 'json'
 require_relative './services/query_service'
+require_relative './services/import_from_csv'
 
 get '/tests' do
   content_type :json
@@ -11,6 +12,13 @@ end
 get '/tests/:token' do
   content_type :json
   QueryService.fetch_by_token(params[:token].upcase)
+end
+
+post '/import' do
+  file = params[:file][:tempfile]
+  importer = CSVImporter.new(DB_PARAMS, file)
+  importer.import
+  "Arquivo importado com sucesso!"
 end
 
 set :port, 3000
