@@ -27,12 +27,15 @@ GEM
       ruby2_keywords (~> 0.0.1)
     net-http (0.4.1)
       uri
+    nio4r (2.7.3)
     nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     public_suffix (6.0.1)
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.7)
     rack-protection (4.0.0)
@@ -46,6 +49,8 @@ GEM
       rack (>= 3)
       webrick (~> 1.8)
     regexp_parser (2.9.2)
+    rexml (3.3.5)
+      strscan
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -60,15 +65,24 @@ GEM
       rspec-support (~> 3.13.0)
     rspec-support (3.13.1)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.23.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     sinatra (4.0.0)
       mustermann (~> 3.0)
       rack (>= 3.0.0, < 4)
       rack-protection (= 4.0.0)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
+    strscan (3.1.0)
     tilt (2.4.0)
     uri (0.13.0)
     webrick (1.8.1)
+    websocket (1.2.11)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -79,9 +93,11 @@ PLATFORMS
 DEPENDENCIES
   capybara
   faraday
+  puma
   rack-test
   rackup
   rspec
+  selenium-webdriver
   sinatra
 
 BUNDLED WITH

@@ -10,3 +10,12 @@ get '/' do
 
   erb :index
 end
+
+get '/:token' do
+  token = params[:token]
+  
+  response = Faraday.get("http://exams-server:3000/tests/#{token}")
+  @tests = JSON.parse(response.body)
+
+  erb :index
+end

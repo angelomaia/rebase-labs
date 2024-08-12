@@ -5,12 +5,12 @@ require 'sinatra'
 require 'rack/test'
 require 'faraday'
 require 'capybara/rspec'
+require 'selenium-webdriver'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.formatter = :documentation
   config.include Capybara::DSL
-  Capybara.default_driver = :rack_test
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -23,4 +23,13 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
+Capybara.register_driver :headless_chrome do |app|
+  Capybara::Selenium::Driver.new(app,
+    browser: :chrome,
+    options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage]))
+end
+
+Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :headless_chrome
 Capybara.app = Sinatra::Application
+Capybara.server = :webrick

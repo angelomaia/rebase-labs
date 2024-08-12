@@ -1,47 +1,47 @@
-      <div id="test-list" class="container mt-4">
-        <% @tests.each do |result| %>
-          <div class="result-item">
-            <div class="card result-card" style="padding: 40px;">
-              <div class="row">
-                <div class="col-md-4">
-                  <h5><strong>Data do Exame:</strong></h5>
-                  <p><%= result['result_date'] %></p>
-                  <h5><strong>Token:</strong></h5>
-                  <p><%= result['result_token'] %></p>
-                </div>
-                <div class="col-md-4">
-                  <h5><strong>Paciente:</strong></h5>
-                  <p><strong>Nome: </strong><%= result['name'] %></p>
-                  <p><strong>CPF: </strong><%= result['cpf'] %></p>
-                  <p><strong>E-mail: </strong><%= result['email'] %></p>
-                  <p><strong>Nasc.: </strong><%= result['birthday'] %></p>
-                </div>
-                <div class="col-md-4">
-                  <h5><strong>Médico :</strong></h5>
-                  <p><strong>Nome: </strong><%= result['doctor']['name'] %></p>
-                  <p><strong>CRM: </strong><%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %></p>
-                </div>
-              </div>
-              <hr>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th class="text-left">Exame</th>
-                    <th class="text-center">Resultado</th>
-                    <th class="text-center">Limites</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% result['tests'].each do |test| %>
-                    <tr>
-                      <td class="text-left"><%= test['type'] %></td>
-                      <td class="text-center"><%= test['result'] %></td>
-                      <td class="text-center"><%= test['limits'] %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+<div id="test-list" class="container mt-4">
+  <% @tests.each do |result| %>
+    <div class="result-item">
+      <div class="card result-card" style="padding: 40px;">
+        <div class="row">
+          <div class="col-md-4">
+            <h5><strong>Data do Exame:</strong></h5>
+            <p><%= result['result_date'] %></p>
+            <h5><strong>Token:</strong></h5>
+            <p><%= result['result_token'] %></p>
           </div>
-        <% end %>
+          <div class="col-md-4">
+            <h5><strong>Paciente:</strong></h5>
+            <p><strong>Nome: </strong><%= result['name'] %></p>
+            <p><strong>CPF: </strong><%= result['cpf'] %></p>
+            <p><strong>E-mail: </strong><%= result['email'] %></p>
+            <p><strong>Nasc.: </strong><%= result['birthday'] %></p>
+          </div>
+          <div class="col-md-4">
+            <h5><strong>Médico :</strong></h5>
+            <p><strong>Nome: </strong><%= result['doctor']['name'] %></p>
+            <p><strong>CRM: </strong><%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %></p>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-left">Exame</th>
+              <th class="text-center">Resultado</th>
+              <th class="text-center">Limites</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% result['tests'].each do |test| %>
+              <tr>
+                <td class="text-left"><%= test['type'] %></td>
+                <td class="text-center"><%= test['result'] %></td>
+                <td class="text-center"><%= test['limits'] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+    </div>
+  <% end %>
+</div>

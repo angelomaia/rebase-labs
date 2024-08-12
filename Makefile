@@ -19,6 +19,13 @@ test-server:
 test-app:
 	docker-compose -f $(COMPOSE_FILE) run --rm app bundle exec rspec
 
+.PHONY: test
+test: test-server test-app
+
+.PHONY: import
+import:
+	docker exec exams-server ruby services/import_from_csv.rb
+
 .PHONY: server-shell
 server-shell:
 	docker-compose -f $(COMPOSE_FILE) exec server /bin/bash

@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'faraday'
 gem 'rackup'
+gem 'puma'
 
 group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end

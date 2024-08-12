@@ -9,34 +9,28 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <div class="navbar-brand mb-0">
-            <a href="/" class="invisible-link">
-              <h2 class="header-with-icon">
-                Rebase Labs
-                <img src="icons/lab.svg" alt="Rebase Labs" style="width: 42px; height: 42px">
-              </h2>
-            </a>
-          </div>
-        </div>
+      <%= erb :'partials/_navbar' %>
     </header>
 
     <div class="content">
-      <div id="pagination-controls-top" class="pagination-controls mb-4"></div>
-
-      <% if @tests.length > 0 %>
+      <% if @tests.length > 1 %>
+        <div id="pagination-controls-top" class="pagination-controls mt-4"></div>
+        <%= erb :'partials/_test_list' %>
+        <div id="pagination-controls-bottom" class="pagination-controls mb-4"></div>
+      <% elsif @tests.length > 0 %>
+        <div class="text-center">
+          <a href="/" id="back-button" class="btn btn-secondary mt-4">Voltar</a>
+        </div>
         <%= erb :'partials/_test_list' %>
       <% else %>
-        <h5 class="text-center">Nenhum exame encontrado.</h5>
+        <h5 class="text-center" style="padding: 50px;">Nenhum exame encontrado.</h5>
       <% end %>
-
-      <div id="pagination-controls-bottom" class="pagination-controls mb-4"></div>
     </div>
 
     <%= erb :'partials/_footer' %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/js/pagination.js"></script>
+    <script src="/js/token.js"></script>
   </body>
 </html>

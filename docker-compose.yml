@@ -26,7 +26,7 @@ services:
     container_name: exams-server
 
   app:
-    build: .
+    build: ./app
     command: bash -c 'bundle install && rackup --host 0.0.0.0'
     volumes:
       - ./app:/app
