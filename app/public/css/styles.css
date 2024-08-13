@@ -11,22 +11,12 @@ body {
   background-color: #cfe9ff;
 }
 
-.content-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-  flex: 0.1
-}
-
 main {
-    flex: 0.85;
+    flex: 0.9;
 }
 
 footer {
-    flex: 0.15;
+    flex: 0.1;
 }
 
 .header-with-icon {

@@ -24,7 +24,7 @@ test: test-server test-app
 
 .PHONY: import
 import:
-	docker exec exams-server ruby services/import_from_csv.rb
+	docker exec exams-server ruby import_from_csv.rb
 
 .PHONY: server-bash
 server-bash:

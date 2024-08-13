@@ -118,5 +118,3 @@ class CSVImporter
   end
 end
 
-# importer = CSVImporter.new(DB_PARAMS, './sample/data.csv')
-# importer.import

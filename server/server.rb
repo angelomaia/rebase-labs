@@ -2,7 +2,7 @@ require 'sinatra'
 require 'puma'
 require 'json'
 require_relative './services/query_service'
-require_relative './services/import_from_csv'
+require_relative './services/csv_importer'
 
 get '/tests' do
   content_type :json
