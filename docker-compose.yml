@@ -27,12 +27,12 @@ services:
 
   app:
     build: ./app
-    command: bash -c 'bundle install && rackup --host 0.0.0.0'
+    command: bash -c 'bundle install && ruby app.rb'
     volumes:
       - ./app:/app
       - bundle_data_app:/usr/local/bundle
     ports:
-      - "4000:9292"
+      - "4000:4000"
     depends_on:
       - server
     container_name: exams-app

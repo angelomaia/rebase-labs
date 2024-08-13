@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'faraday'
+require 'puma'
 require 'faraday/multipart'
 require 'json'
 
@@ -44,3 +45,7 @@ post '/upload_csv' do
     { success: false }.to_json
   end
 end
+
+set :port, 4000
+set :bind, '0.0.0.0'
+set :server, :puma
