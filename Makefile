@@ -26,10 +26,10 @@ test: test-server test-app
 import:
 	docker exec exams-server ruby services/import_from_csv.rb
 
-.PHONY: server-shell
-server-shell:
-	docker-compose -f $(COMPOSE_FILE) exec server /bin/bash
+.PHONY: server-bash
+server-bash:
+	docker-compose -f $(COMPOSE_FILE) run server /bin/bash
 
-.PHONY: app-shell
-app-shell:
-	docker-compose -f $(COMPOSE_FILE) exec app /bin/bash
+.PHONY: app-bash
+app-bash:
+	docker-compose -f $(COMPOSE_FILE) run app /bin/bash

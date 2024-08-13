@@ -11,8 +11,22 @@ body {
   background-color: #cfe9ff;
 }
 
-.content {
-  flex: 1;
+.content-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+  flex: 0.1
+}
+
+main {
+    flex: 0.85;
+}
+
+footer {
+    flex: 0.15;
 }
 
 .header-with-icon {

@@ -8,7 +8,7 @@ describe '/import' do
     query_result = QueryService.fetch_all_tests
 
     expect(last_response).to be_ok
-    expect(last_response.body).to include('Arquivo importado com sucesso!')
+    expect(last_response.body).to include('{"success":true}')
     expect(query_result).to eq [{
                                 "result_token" => "0B5XII",
                                 "result_date" => "2021-07-15",

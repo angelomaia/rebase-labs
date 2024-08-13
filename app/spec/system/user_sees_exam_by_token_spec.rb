@@ -2,8 +2,9 @@ require 'spec_helper'
 require_relative '../../app'
 
 RSpec.describe 'App', type: :system do
-  describe 'Usuário pesquisa por um token de exame', js: true do
+  context 'Usuário vê um exame individual pelo token', js: true do
     it 'com sucesso' do
+      token_data = File.read(File.join(__dir__, '..', 'support', 'token.json'))
       token_response = instance_double(Faraday::Response, body: token_data)
       allow(Faraday).to receive(:get).with('http://exams-server:3000/tests/FWZ3AT').and_return(token_response)
 

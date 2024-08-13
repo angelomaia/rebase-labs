@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'faraday'
 gem 'rackup'
 gem 'puma'
+gem 'faraday'
+gem 'faraday-multipart'
 
 group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'cuprite'
 end

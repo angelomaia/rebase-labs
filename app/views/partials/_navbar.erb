@@ -8,10 +8,16 @@
         </h2>
       </a>
     </div>
-    <div id="input-token" class="d-flex justify-content-center mx-auto" style="width: 300px;">
+    <div id="input-token" class="d-flex justify-content-center" style="width: 300px;">
       <form id="token-form" class="d-flex w-100">
         <input type="text" id="token-input" class="form-control me-2" placeholder="Insira um Token" required>
         <button type="submit" class="btn btn-outline-primary" id="submit-btn">Pesquisar</button>
+      </form>
+    </div>
+    <div id="csv-upload" class="d-flex justify-content-end text-right" style="width: 400px;">
+      <form id="csv-form" class="d-flex w-100" action="/upload_csv" method="POST" enctype="multipart/form-data">
+        <input type="file" id="csv-file" name="file" class="form-control me-2" required>
+        <button type="submit" class="btn btn-outline-success" id="upload-btn">Enviar</button>
       </form>
     </div>
   </div>

@@ -18,7 +18,7 @@ post '/import' do
   file = params[:file][:tempfile]
   importer = CSVImporter.new(DB_PARAMS, file)
   importer.import
-  "Arquivo importado com sucesso!"
+  { success: true }.to_json
 end
 
 set :port, 3000
