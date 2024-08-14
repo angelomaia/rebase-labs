@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('csv-form');
   const notice = document.getElementById('upload-notice');
+  const fileInput = document.getElementById('csv-file');
+  const fileNameDisplay = document.getElementById('file-name');
+
+  fileNameDisplay.textContent = 'Nenhum arquivo selecionado';
+  
+  fileInput.addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
+    fileNameDisplay.textContent = fileName;
+  });
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();

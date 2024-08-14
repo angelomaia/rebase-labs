@@ -14,10 +14,12 @@
         <button type="submit" class="btn btn-outline-primary" id="submit-btn">Pesquisar</button>
       </form>
     </div>
-    <div id="csv-upload" class="d-flex justify-content-end text-right" style="width: 400px;">
-      <form id="csv-form" class="d-flex w-100" action="/upload_csv" method="POST" enctype="multipart/form-data">
-        <input type="file" id="csv-file" name="file" class="form-control me-2" required>
-        <button type="submit" class="btn btn-outline-success" id="upload-btn">Enviar</button>
+    <div id="csv-upload" class="d-flex justify-content-end text-right" style="width: 500px;">
+      <form id="csv-form" class="d-flex" action="/upload_csv" method="POST" enctype="multipart/form-data">
+        <label for="csv-file" class="btn btn-secondary m-2" id="upload-label">Selecionar CSV</label>
+        <input type="file" id="csv-file" name="file" class="form-control d-none" required>
+        <span id="file-name" class="align-self-center"></span>
+        <button type="submit" class="btn btn-outline-success m-2" id="upload-btn">Enviar</button>
       </form>
     </div>
   </div>

@@ -33,3 +33,7 @@ server-bash:
 .PHONY: app-bash
 app-bash:
 	docker-compose -f $(COMPOSE_FILE) run app /bin/bash
+
+.PHONY: clean
+clean:
+	docker-compose -f $(COMPOSE_FILE) down -v
