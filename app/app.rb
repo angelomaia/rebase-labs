@@ -42,7 +42,7 @@ post '/upload_csv' do
   else
     status 400
     content_type :json
-    { success: false }.to_json
+    { success: false, error: 'Arquivo inválido' }.to_json
   end
 end
 

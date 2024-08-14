@@ -26,13 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
         notice.classList.remove('d-none');
         notice.textContent = 'Arquivo enviado para processamento.';
       } else {
+        notice.classList.remove('d-none');
         notice.classList.remove('alert-success');
         notice.classList.add('alert-danger');
-        notice.textContent = 'Erro ao enviar o arquivo.';
+        notice.textContent = data.error || 'Erro ao enviar o arquivo.';
       }
     })
     .catch(error => {
       console.error('Error:', error);
+      notice.classList.remove('d-none');
       notice.classList.remove('alert-success');
       notice.classList.add('alert-danger');
       notice.textContent = 'Erro ao enviar o arquivo.';
