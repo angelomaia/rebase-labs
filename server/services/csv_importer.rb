@@ -16,15 +16,45 @@ class CSVImporter
     columns = rows.shift
 
     rows.each do |row|
-      patient_id = import_patient(columns, row)
-      doctor_id = import_doctor(columns, row)
-      test_id = import_test(columns, row, doctor_id, patient_id)
-      exam_id = import_exam(columns, row)
-      link_test_exam(test_id, exam_id)
+      unless check_duplicate(columns, row)
+        patient_id = import_patient(columns, row)
+        doctor_id = import_doctor(columns, row)
+        test_id = import_test(columns, row, doctor_id, patient_id)
+        exam_id = import_exam(columns, row)
+        link_test_exam(test_id, exam_id)
+      end
     end
   end
 
   private
+
+  def check_duplicate(columns, row)
+    token = row[columns.index('token resultado exame')]
+    test_type = row[columns.index('tipo exame')]
+
+    query = <<-SQL
+      SELECT 
+        tests.result_token, tests.result_date, 
+        patients.cpf, patients.name, patients.email, patients.birthday,
+        doctors.crm, doctors.crm_state, doctors.name AS doctor_name,
+        exams.test_type, exams.test_limits, exams.result AS exam_result
+      FROM 
+        tests
+      JOIN 
+        patients ON tests.patient_id = patients.id
+      JOIN 
+        doctors ON tests.doctor_id = doctors.id
+      JOIN 
+        test_exams ON tests.id = test_exams.test_id
+      JOIN 
+        exams ON test_exams.exam_id = exams.id
+      WHERE
+        tests.result_token = $1 AND exams.test_type = $2
+    SQL
+    result = @conn.exec_params(query, [token, test_type])
+
+    result.ntuples > 0
+  end
 
   def import_patient(columns, row)
     cpf = row[columns.index('cpf')]
