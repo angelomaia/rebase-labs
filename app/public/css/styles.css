@@ -74,3 +74,12 @@ footer {
   z-index: 1030;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+#file-name {
+  display: inline-block;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
