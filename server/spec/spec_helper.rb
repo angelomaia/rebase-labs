@@ -7,6 +7,7 @@ require 'sinatra'
 require 'rack/test'
 require_relative '../server'
 require_relative '../config/db_config'
+require_relative '../services/csv_validator.rb'
 require_relative '../services/csv_importer.rb'
 require_relative '../services/query_service.rb'
 
