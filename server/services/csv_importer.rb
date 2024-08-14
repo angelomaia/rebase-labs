@@ -1,6 +1,6 @@
 require 'pg'
 require 'csv'
-require './config/db_config'
+require_relative '../config/db_config'
 
 class CSVImporter
   def initialize(db_params, csv_file)

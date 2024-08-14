@@ -11,18 +11,19 @@ services:
       - ./server/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     container_name: exams-db
 
-  server:
+  server: &server
     build: .
     command: bash -c 'bundle install && ruby server.rb'
     volumes:
       - ./server:/app
       - bundle_data_server:/usr/local/bundle
+      - temp_data:/tmp
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://my_user:my_password@db:5432/my_database
+      - REDIS_URL=redis://redis:6379/0
     container_name: exams-server
 
   app:
@@ -37,6 +38,18 @@ services:
       - server
     container_name: exams-app
 
+  sidekiq:
+    <<: *server
+    container_name: exams-sidekiq
+    ports: []
+    command: bash -c 'bundle install && sidekiq -r ./jobs/import_job.rb'
+    depends_on:
+      - redis
+
+  redis:
+    image: redis
+
 volumes:
   bundle_data_server:
   bundle_data_app:
+  temp_data:

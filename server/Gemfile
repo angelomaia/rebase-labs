@@ -6,6 +6,7 @@ gem 'csv'
 gem 'rackup'
 gem 'sinatra'
 gem 'byebug'
+gem 'sidekiq'
 
 group :test do
   gem 'rack-test'

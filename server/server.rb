@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'puma'
 require 'json'
+require 'fileutils'
+require_relative './jobs/import_job.rb'
 require_relative './services/query_service'
 require_relative './services/csv_importer'
 require_relative './services/csv_validator'
@@ -17,12 +19,16 @@ end
 
 post '/import' do
   file = params[:file][:tempfile]
+  filename = params[:file][:filename]
+  temp_file_path = "/tmp/#{filename}"
+
+  FileUtils.cp(file.path, temp_file_path)
+
   validation_response = CSVValidator.validate(file)
   result = JSON.parse(validation_response, symbolize_names: true)
 
   if result[:success]
-    importer = CSVImporter.new(DB_PARAMS, file)
-    importer.import
+    ImportJob.perform_async(temp_file_path)
     status 200
     { success: true }.to_json
   else
