@@ -5,11 +5,11 @@ all: build
 
 .PHONY: up
 up:
-	docker-compose -f $(COMPOSE_FILE) up --build -d
-
-.PHONY: up-info
-up-info:
 	docker-compose -f $(COMPOSE_FILE) up --build
+
+.PHONY: up-terminal
+up-terminal:
+	docker-compose -f $(COMPOSE_FILE) up --build -d
 
 .PHONY: down
 down:

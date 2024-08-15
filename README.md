@@ -6,30 +6,37 @@ Uma app web para listagem de exames médicos.
 
 - [Tech Stack](#tech-stack)
 - [Dependências](#dependências)
+- [Prints da App](#imagens)
 - [Rodando a aplicação](#rodando-a-aplicação)
 - [Testes (RSpec)](#testes-rspec)
 - [Queries](#queries)
-- [Desligando a Aplicação](#desligando-a-aplicação)
+- [Bash](#bash)
 - [API](#api)
   - [GET /tests](#get-tests)
   - [GET /test/:token](#get-teststoken)
   - [POST /import](#post-import)
-- [Prints da App](#imagens)
-
+- [Desligando a Aplicação](#desligando-a-aplicação)
 
 ## Tech Stack
 
-* Docker
-* Ruby
-* Sinatra
-* PostgreSQL
-* RSpec
-* Sidekiq
-* Redis
+🐋 Docker<br>
+💎 Ruby<br>
+🎩 Sinatra<br>
+🐘 PostgreSQL<br>
+🔎 RSpec<br>
+🥋 Sidekiq<br>
+🟥 Redis<br>
 
 ## Dependências
 
-* Docker
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+## Prints da App
+
+![vazio.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-43-55.png)
+
+
+![populado.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-44-06.png)
 
 
 ## Rodando a aplicação
@@ -39,6 +46,8 @@ Execute o seguinte comando na pasta raiz do projeto para rodar a aplicação via
 ```
 make up
 ```
+
+A aplicação front-end (```exams-app```) estará rodando em ```http://localhost:4000/```, equanto a back-end API (```exams-server```) estará rodando em ```http://localhost:3000/```
 
 Caso queira rodar a aplicação mantendo o log dos servidores visível no terminal, execute:
 
@@ -51,7 +60,6 @@ para popular o banco de dados com uma lista de exames, execute:
 ```
 make import
 ```
-
 
 ## Testes (RSpec)
 
@@ -72,19 +80,16 @@ Para fazer queries diretamente no Banco de Dados, execute o comando a seguir com
 make sql
 ```
 
+## Bash
 
-## Desligando a aplicação
-
-Para derrubar os containers da aplicação, execute o comando:
-
-```
-make down
-```
-
-Para apagar todos os containers e volumes do projeto na sua máquina, execute:
+Para abrir o terminal (bash) dentro dos containers ```server``` e ```app```, respectivamente, execute os comandos:
 
 ```
-make clean
+make server-bash
+```
+
+```
+make app-bash
 ```
 
 
@@ -155,8 +160,9 @@ Retorna um JSON com todos os exames resultantes de uma Query no banco de dados, 
 
 A partir de um params[:token], retorna um JSON com o exame que tem seu token rastreado a partir uma Query no banco de dados, como no exemplo:
 
-```
-GET tests/2VPICQ
+```GET /tests/2VPICQ```
+
+```json
 
 [
   {
@@ -194,25 +200,32 @@ GET tests/2VPICQ
 
 ### ```POST /import```
 
-A partir de um arquivo CSV recebido como ```params[:file]```, executa uma operação lógica em que, caso o CSV seja um arquivo válido, executa um ```ImportJob``` para importação dos dados para serem armazenados no banco de dados.
+A partir de um arquivo CSV recebido como ```params[:file]```, executa uma operação lógica em que, caso o CSV seja um arquivo válido, executa um ```ImportJob``` para enfileiramento (enqueue) da importação dos dados, que são eventualmente gravados no banco de dados.
 
 As respostas podem ser:
 
-```
+```ruby
   response.status = 200
   response.body = { success: true }
 ```
 
 ou:
 
-```
+```ruby
   response.status = 400
   response.body = { success: false, error: 'Descrição do erro' }
 ```
 
-## Prints da App
+## Desligando a aplicação
 
-![vazio.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-43-55.png)
+Para derrubar os containers da aplicação, execute o comando na pasta raiz do projeto:
 
+```
+make down
+```
 
-![populado.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-44-06.png)
+Para apagar todos os containers e volumes do projeto na sua máquina, execute:
+
+```
+make clean
+```
