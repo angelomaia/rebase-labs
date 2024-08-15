@@ -49,10 +49,10 @@ make up
 
 A aplicação front-end (```exams-app```) estará rodando em ```http://localhost:4000/```, equanto a back-end API (```exams-server```) estará rodando em ```http://localhost:3000/```
 
-Caso queira rodar a aplicação mantendo o log dos servidores visível no terminal, execute:
+Caso queira rodar a aplicação liberando o mesmo terminal para executar outros comandos, execute:
 
 ```
-make up-info
+make up-terminal
 ```
 
 para popular o banco de dados com uma lista de exames, execute:
