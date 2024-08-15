@@ -7,7 +7,6 @@ describe '/tests/:token' do
 
     get '/tests/0W9I67'
 
-    puts last_response.body
     expect(last_response.status).to eq 200
     expect(last_response.content_type).to include 'application/json'
     expect(JSON.parse(last_response.body)).to eq [{
