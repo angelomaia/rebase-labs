@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(data => {
       if (data.success) {
         notice.classList.remove('d-none');
-        notice.textContent = 'Arquivo enviado para processamento.';
+        notice.textContent = 'Arquivo enviado para processamento, favor aguardar.';
       } else {
         notice.classList.remove('d-none');
         notice.classList.remove('alert-success');

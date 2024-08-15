@@ -13,7 +13,7 @@ services:
 
   server: &server
     build: .
-    command: bash -c 'bundle install && ruby server.rb'
+    command: bash -c 'gem install bundler && bundle install && ruby server.rb'
     volumes:
       - ./server:/app
       - bundle_data_server:/usr/local/bundle
@@ -42,7 +42,7 @@ services:
     <<: *server
     container_name: exams-sidekiq
     ports: []
-    command: bash -c 'bundle install && sidekiq -r ./jobs/import_job.rb'
+    command: bash -c 'gem install bundler && bundle install && sidekiq -r ./jobs/import_job.rb'
     depends_on:
       - redis
 
