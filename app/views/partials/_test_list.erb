@@ -3,9 +3,11 @@
     <div class="result-item">
       <div class="card result-card" style="padding: 40px;">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-2">
             <h5><strong>Data do Exame:</strong></h5>
             <p><%= result['result_date'] %></p>
+          </div>
+          <div class="col-md-2">
             <h5><strong>Token:</strong></h5>
             <p><%= result['result_token'] %></p>
           </div>
@@ -13,13 +15,14 @@
             <h5><strong>Paciente:</strong></h5>
             <p><strong>Nome: </strong><%= result['name'] %></p>
             <p><strong>CPF: </strong><%= result['cpf'] %></p>
-            <p><strong>E-mail: </strong><%= result['email'] %></p>
+            <p><strong>E-mail: </strong><%= result['patient_email'] %></p>
             <p><strong>Nasc.: </strong><%= result['birthday'] %></p>
           </div>
           <div class="col-md-4">
             <h5><strong>Médico :</strong></h5>
             <p><strong>Nome: </strong><%= result['doctor']['name'] %></p>
             <p><strong>CRM: </strong><%= result['doctor']['crm'] %>/<%= result['doctor']['crm_state'] %></p>
+            <p><strong>E-mail: </strong><%= result['doctor']['email'] %></p>
           </div>
         </div>
         <hr>

@@ -14,12 +14,13 @@ describe '/tests/:token' do
                                                   "result_date" => "2021-07-09",
                                                   "cpf" => "048.108.026-04",
                                                   "name" => "Juliana dos Reis Filho",
-                                                  "email" => "mariana_crist@kutch-torp.com",
+                                                  "patient_email" => "mariana_crist@kutch-torp.com",
                                                   "birthday" => "1995-07-03",
                                                   "doctor" => {
                                                     "crm" => "B0002IQM66",
                                                     "crm_state" => "SC",
-                                                    "name" => "Maria Helena Ramalho"
+                                                    "name" => "Maria Helena Ramalho",
+                                                    "email" => "rayford@kemmer-kunze.info"
                                                   },
                                                   "tests" => [
                                                     {

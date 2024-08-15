@@ -9,8 +9,8 @@ class QueryService
     query = <<-SQL
       SELECT 
         tests.result_token, tests.result_date, 
-        patients.cpf, patients.name, patients.email, patients.birthday,
-        doctors.crm, doctors.crm_state, doctors.name AS doctor_name,
+        patients.cpf, patients.name, patients.email AS patient_email, patients.birthday,
+        doctors.crm, doctors.crm_state, doctors.email, doctors.name AS doctor_name,
         exams.test_type, exams.test_limits, exams.result AS exam_result
       FROM 
         tests
@@ -32,12 +32,13 @@ class QueryService
         "result_date" => rows.first['result_date'],
         "cpf" => rows.first['cpf'],
         "name" => rows.first['name'],
-        "email" => rows.first['email'],
+        "patient_email" => rows.first['patient_email'],
         "birthday" => rows.first['birthday'],
         "doctor" => {
           "crm" => rows.first['crm'],
           "crm_state" => rows.first['crm_state'],
-          "name" => rows.first['doctor_name']
+          "name" => rows.first['doctor_name'],
+          "email" => rows.first['email']
         },
         "tests" => rows.map do |row|
           {
@@ -58,8 +59,8 @@ class QueryService
     query = <<-SQL
       SELECT 
         tests.result_token, tests.result_date, 
-        patients.cpf, patients.name, patients.email, patients.birthday,
-        doctors.crm, doctors.crm_state, doctors.name AS doctor_name,
+        patients.cpf, patients.name, patients.email AS patient_email, patients.birthday,
+        doctors.crm, doctors.crm_state, doctors.email, doctors.name AS doctor_name,
         exams.test_type, exams.test_limits, exams.result AS exam_result
       FROM 
         tests
@@ -83,12 +84,13 @@ class QueryService
         "result_date" => rows.first['result_date'],
         "cpf" => rows.first['cpf'],
         "name" => rows.first['name'],
-        "email" => rows.first['email'],
+        "patient_email" => rows.first['patient_email'],
         "birthday" => rows.first['birthday'],
         "doctor" => {
           "crm" => rows.first['crm'],
           "crm_state" => rows.first['crm_state'],
-          "name" => rows.first['doctor_name']
+          "name" => rows.first['doctor_name'],
+          "email" => rows.first['email']
         },
         "tests" => rows.map do |row|
           {

@@ -12,12 +12,13 @@ describe 'QueryService' do
                           "result_date" => "2021-07-15",
                           "cpf" => "089.034.562-70",
                           "name" => "Patricia Gentil",
-                          "email" => "herta_wehner@krajcik.name",
+                          "patient_email" => "herta_wehner@krajcik.name",
                           "birthday" => "1998-02-25",
                           "doctor" => {
                             "crm" => "B0002W2RBG",
                             "crm_state" => "CE",
-                            "name" => "Dra. Isabelly Rêgo"
+                            "name" => "Dra. Isabelly Rêgo",
+                            "email" => "diann_klein@schinner.org"
                           },
                           "tests" => [
                             {
@@ -49,12 +50,13 @@ describe 'QueryService' do
                         "result_date" => "2021-07-09",
                         "cpf" => "048.108.026-04",
                         "name" => "Juliana dos Reis Filho",
-                        "email" => "mariana_crist@kutch-torp.com",
+                        "patient_email" => "mariana_crist@kutch-torp.com",
                         "birthday" => "1995-07-03",
                         "doctor" => {
                           "crm" => "B0002IQM66",
                           "crm_state" => "SC",
-                          "name" => "Maria Helena Ramalho"
+                          "name" => "Maria Helena Ramalho",
+                          "email" => "rayford@kemmer-kunze.info"
                         },
                         "tests" => [
                           {
