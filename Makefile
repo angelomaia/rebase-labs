@@ -5,6 +5,10 @@ all: build
 
 .PHONY: up
 up:
+	docker-compose -f $(COMPOSE_FILE) up --build -d
+
+.PHONY: up-info
+up-info:
 	docker-compose -f $(COMPOSE_FILE) up --build
 
 .PHONY: down
@@ -33,6 +37,10 @@ server-bash:
 .PHONY: app-bash
 app-bash:
 	docker-compose -f $(COMPOSE_FILE) run app /bin/bash
+
+.PHONY: sql
+sql:
+	docker exec -it exams-db psql -U my_user -d my_database
 
 .PHONY: clean
 clean:
