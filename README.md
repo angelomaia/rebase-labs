@@ -34,7 +34,7 @@ Uma app web para listagem de exames médicos.
 
 ## Funcionalidades
 
-- Leitura arquivo CSV e popula banco de dados com exames médicos
+- Leitura de arquivo CSV de exames médicos e inserção no banco de dados
 - Exibição de listagem de exames médicos numa aplicação front-end
 - Pesquisa de exames médicos a partir de um token
 - Recebimento de arquivo CSV via aplicação front-end, sendo processado de forma assíncrona e eventualmente adicionado ao banco de dados
