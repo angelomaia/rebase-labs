@@ -77,7 +77,7 @@ make import
 
 ## Testes (RSpec)
 
-Para rodar os testes, execute o comando a seguir após ter rodado a aplicação pelo menos uma vez (para montar os containers):
+Para rodar os testes, execute o comando a seguir com os containers da aplicação rodando:
 
 ```
 make test
