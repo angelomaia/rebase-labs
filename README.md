@@ -6,6 +6,7 @@ Uma app web para listagem de exames médicos.
 
 - [Tech Stack](#tech-stack)
 - [Dependências](#dependências)
+- [Funcionalidades](#funcionalidades)
 - [Prints da App](#imagens)
 - [Rodando a aplicação](#rodando-a-aplicação)
 - [Testes (RSpec)](#testes-rspec)
@@ -30,6 +31,13 @@ Uma app web para listagem de exames médicos.
 ## Dependências
 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+## Funcionalidades
+
+- Leitura arquivo CSV e popula banco de dados com exames médicos
+- Exibição de listagem de exames médicos numa aplicação front-end
+- Pesquisa de exames médicos a partir de um token
+- Recebimento de arquivo CSV via aplicação front-end, sendo processado de forma assíncrona e eventualmente adicionado ao banco de dados
 
 ## Prints da App
 
