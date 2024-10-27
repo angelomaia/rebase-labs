@@ -41,17 +41,17 @@ Uma app web para listagem de exames médicos.
 
 ## Prints da App
 
-![vazio.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-43-55.png)
+![vazio.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_1.png)
 
-![populado.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-14%2021-44-06.png)
+![populado.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_2.png)
 
-![processamento.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-15%2011-08-22.png)
+![processamento.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_3.png)
 
-![csv_vazio.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-15%2011-05-47.png)
+![csv_vazio.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_4.png)
 
-![formato_invalido.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-15%2011-05-58.png)
+![formato_invalido.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_5.png)
 
-![arquivo_invalido.jpg](https://raw.githubusercontent.com/angelomaia/angelomaia.github.io/master/images/Screenshot%20from%202024-08-15%2011-06-07.png)
+![arquivo_invalido.jpg](https://raw.githubusercontent.com/angelomaia/rebase-labs/refs/heads/main/app/public/relabs_6.png)
 
 ## Rodando a aplicação
 
